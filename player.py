@@ -21,7 +21,7 @@ lvlhpDisplay.text = lvl
 
 def input(key):
     if key == 'q':
-        quit()
+        exit()
     if key == 'space':
         if not jump.playing:
             jump.play()
