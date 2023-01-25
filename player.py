@@ -5,6 +5,9 @@ player = FirstPersonController(
 )
 player.speed = player.speed * 2.5
 
+levelDisplay = Text(
+    color=color.blue, scale=2, origin=(-8.8, 9))
+levelDisplay.text = "HP:"
 hpDisplay = Text(
     color=color.white, scale=3, origin=(-18, 6))
 hpDisplay.text = health

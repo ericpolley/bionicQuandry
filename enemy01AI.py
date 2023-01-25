@@ -8,20 +8,25 @@ distance = math.sqrt((player.x - enemy1.x)**2 + (player.y -
 # if enemy1 gets too far on the z axis, add 2 to the z axis.
 if enemy1.z < 11:
     enemy1.z = enemy1.z + 2
-if distance < 40 and enemy1.z > 10:
+if distance < 50:
     # Move the enemy1 towards the player
     enemy1.position = lerp(
         enemy1.position, player.position, time.dt * .45)
-# enemy collison group
-enemy1.collision_group = "Enemy"
-# Keeps the Enemy off of the floor
-if enemy1.y < ground.y + 1.6:
-    enemy1.y = ground.y + 1.6
+# ATTACK
 if enemy1.intersects(player):
-    with open('enemyAttack.py', 'r') as file:
-        file_enemyAttack = file.read()
-        exec(file_enemyAttack)
-        level01loaded = True
+    enemy1.y = enemy1.y + 5
+    if enemy1.x < player.x:
+        enemy1.x = enemy1.x - 15
+    if enemy1.x > player.x:
+        enemy1.x = enemy1.x + 15
+    if enemy1.z < player.z:
+        enemy1.z = enemy1.z - 15
+    if enemy1.z > player.z:
+        enemy1.z = enemy1.z + 15
+
+    with open('hp.py', 'r') as file:
+        hp = file.read()
+        exec(hp)
 
     if not punchy.playing:
         punchy.play()
@@ -29,6 +34,10 @@ if enemy1.intersects(player):
 player_xz = player.position
 player_xz.y = enemy1.position.y
 enemy1.look_at(player_xz)
+
+# Keeps the Enemy off of the floor
+if enemy1.y < ground.y + 1.6:
+    enemy1.y = ground.y + 1.6
 
 
 # ENEMY AI ENDS
