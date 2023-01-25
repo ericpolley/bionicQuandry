@@ -1,7 +1,19 @@
+
+
 player = FirstPersonController(
-    collider='box', position=(0, 6, -10)
+    collider='sphere', position=(0, 65, -10)
 )
 player.speed = player.speed * 2.5
+
+hpDisplay = Text(
+    color=color.white, scale=3, origin=(-18, 6))
+hpDisplay.text = health
+levelDisplay = Text(
+    color=color.black, scale=2, origin=(-4.2, -9))
+levelDisplay.text = "LEVEL:"
+lvlhpDisplay = Text(
+    color=color.black, scale=3, origin=(-18, -6))
+lvlhpDisplay.text = lvl
 
 
 def input(key):
@@ -10,3 +22,12 @@ def input(key):
     if key == 'space':
         if not jump.playing:
             jump.play()
+        destroy(t)
+        destroy(t2)
+        destroy(t3)
+    if key == 'enter':
+        if not jump.playing:
+            jump.play()
+        destroy(t)
+        destroy(t2)
+        destroy(t3)

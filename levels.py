@@ -2,6 +2,7 @@ global lvl  # Robot
 level01loaded = False
 level02loaded = False
 level03loaded = False
+level04loaded = False
 
 
 with open('lv0entities.py', 'r') as file:
@@ -10,6 +11,7 @@ with open('lv0entities.py', 'r') as file:
 
 
 def update():
+    global level04loaded
     global level03loaded
     global level02loaded
     global level01loaded
@@ -41,13 +43,23 @@ def update():
     if lvl == 3:
         if level03loaded == False:
             with open('lv03entities.py', 'r') as file:
-                file_entities2 = file.read()
-                exec(file_entities2)
+                file_entities3 = file.read()
+                exec(file_entities3)
                 level03loaded = True
         if level03loaded == True:
             with open('lv03.py', 'r') as file:
                 file_lv02 = file.read()
                 exec(file_lv02)
+    if lvl == 4:
+        if level04loaded == False:
+            with open('lv04entities.py', 'r') as file:
+                file_entities4 = file.read()
+                exec(file_entities4)
+                level04loaded = True
+        if level04loaded == True:
+            with open('lv04.py', 'r') as file:
+                file_lv04 = file.read()
+                exec(file_lv04)
 
 
 # player controls

@@ -1,3 +1,7 @@
+import math
+import time
+
+
 # ENEMY AI
 distance = math.sqrt((player.x - enemy1.x)**2 + (player.y -
                                                  enemy1.y)**2 + (player.z - enemy1.z)**2)
@@ -11,12 +15,13 @@ if distance < 40 and enemy1.z > 10:
 # enemy collison group
 enemy1.collision_group = "Enemy"
 # Keeps the Enemy off of the floor
-if enemy1.y < ground.y + 1.4:
-    enemy1.y = ground.y + 1.4
+if enemy1.y < ground.y + 1.6:
+    enemy1.y = ground.y + 1.6
 if enemy1.intersects(player):
-    # player.position += enemy1.back * -4
-    player.position = (0, 6, -10)
-    player.rotation = (0, 0, 0)
+    with open('enemyAttack.py', 'r') as file:
+        file_enemyAttack = file.read()
+        exec(file_enemyAttack)
+        level01loaded = True
 
     if not punchy.playing:
         punchy.play()
@@ -24,4 +29,6 @@ if enemy1.intersects(player):
 player_xz = player.position
 player_xz.y = enemy1.position.y
 enemy1.look_at(player_xz)
+
+
 # ENEMY AI ENDS

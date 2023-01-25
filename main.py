@@ -6,6 +6,7 @@ app = Ursina()
 window.fullscreen = True
 
 lvl = 1
+health = 5
 
 # Music
 with open('audio.py', 'r') as file:

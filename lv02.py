@@ -4,6 +4,7 @@ global checkPoint02
 global enemy01
 
 destroy(checkPoint01)
+lvlhpDisplay.text = lvl
 
 
 if player.intersects(checkPoint02) and lvl == 2:
